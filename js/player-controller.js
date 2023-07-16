@@ -59,10 +59,11 @@ function showTime() {
  * Plays a random song from the song list
  * @see {@link song_list}
  */
-function play_music() {
+ function play_music() {
   /** @type {string} */
   let random_song = song_list[Math.floor(Math.random() * song_list.length)];
   player.src = random_song;
+  player.load(); // Load the audio file without playing it
 }
 
 /**
@@ -86,17 +87,22 @@ function play_music() {
 /**
  * ???
  */
-function controller() {
+ function controller() {
   playing = !playing;
   if (!controller_state) {
-    // Remove the line below to prevent autoplay
-    // play_music();
+    play_music();
     controller_state = true;
     playing = true;
+    player.play().catch(function(error) {
+      // Handle error, if any
+      console.log('Error playing the audio:', error);
+    });
+  } else {
+    playpause();
   }
-  playpause();
   updateIconsVisibility();
 }
+
 
 document.onkeydown = function (e) {
   e = e || window.event;
