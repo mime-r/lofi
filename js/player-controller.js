@@ -64,7 +64,17 @@ function showTime() {
   let random_song = song_list[Math.floor(Math.random() * song_list.length)];
   player.src = random_song;
   player.load(); // Load the audio file without playing it
+
+  // Wait for the audio to be ready to play
+  player.addEventListener('canplaythrough', function() {
+    // Start playing only when the audio is ready
+    player.play().catch(function(error) {
+      // Handle error, if any
+      console.log('Error playing the audio:', error);
+    });
+  }, { once: true }); // Use { once: true } to ensure the event listener is removed after it's triggered
 }
+
 
 /**
  * Toggles the music between playing and paused
