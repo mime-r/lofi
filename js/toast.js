@@ -56,7 +56,7 @@ target: 'body'
 
 const defaultmessage_list = [
     "Welcome to [Lofi Cafe]! ☕ We hope you enjoy your stay! ^^",
-    'Stay tuned for more updates and join the community: <a href="https://discord.gg/wKmVXZCzQ8" target="_blank">https://discord.gg/wKmVXZCzQ8</a> 🎶',
+    'Stay tuned for more updates and join the community: <a href="https://discord.gg/zNCjB9DJ9z" target="_blank">https://discord.gg/zNCjB9DJ9z</a> 🎶',
 ];
 
 var showtoast = new ToastBuilder(myOptions);
