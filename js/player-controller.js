@@ -80,7 +80,7 @@ const playHistory = {
   }
 };
 
-player.addEventListener('ended', playHistory.goToNext); // Add another song to play when current one ends
+player.addEventListener('ended', playHistory.goToNext.bind(playHistory)); // Add another song to play when current one ends
 
 // Functions
 /**
