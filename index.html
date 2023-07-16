@@ -9,6 +9,7 @@
         <!-- Styles -->
         <link href="./css/hardpixel.css" rel="stylesheet">
         <link href="./css/index.css" rel="stylesheet">
+        <link href="./css/player-controls.css" rel="stylesheet">
 
         <!-- Site Icon -->
         <link rel="shortcut icon" type="image/x-icon" href="./assets/img/icon.png">
@@ -46,13 +47,27 @@
 
             <!-- Centerpiece Content -->
             <div id="centerpiece">
-                <div id="controls-icon">
-                    <div id="pause-icon"></div>
-                    <svg id="play-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-                        <polygon points="10,0 90,50 10,100"></polygon>
-                      </svg>
+                <div id="clock-wrapper">
+                    <div id="controls-icon">
+                        <div id="pause-icon"></div>
+                        <svg id="play-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+                            <polygon points="10,0 90,50 10,100"></polygon>
+                        </svg>
+                    </div>
+                    <div id="clockdisplay" class="clock" onload="showTime()">08:19:44</div>
                 </div>
-                <div id="clockdisplay" class="clock" onload="showTime()">08:19:44</div>
+                <!-- UI Player Controls -->
+                <div id="controls">
+                    <div id="toggle-play-button">    
+                        <svg id="toggle-play-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+                            <polygon points="10,0 90,50 10,100"></polygon>
+                        </svg>
+                        <svg id="toggle-pause-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+                            <polygon points="10,0 40,0 40,100 10,100"></polygon>
+                            <polygon points="60,0 90,0 90,100 60,100"></polygon>
+                        </svg>
+                    </div>
+                </div>
             </div>
 
             <!-- Bottom Right Content -->
@@ -80,6 +95,7 @@
         <script src="./js/utils.js"></script>
         <script src="./js/toast.js"></script>
         <script src="./js/player-controller.js"></script>
+        <script src="./js/ui-controls.js"></script>
         <script src="./js/themer.js"></script>
     </body>
 </html>
