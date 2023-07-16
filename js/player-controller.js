@@ -68,13 +68,20 @@ function play_music() {
 /**
  * Toggles the music between playing and paused
  */
-function playpause() {
+ function playpause() {
   if (player.paused) {
-    player.play();
+    player.play().catch(function(error) {
+      // Handle error, if any
+      console.log('Error playing the audio:', error);
+    });
+    playing = true;
   } else {
     player.pause();
+    playing = false;
   }
+  updateIconsVisibility();
 }
+
 
 /**
  * ???
