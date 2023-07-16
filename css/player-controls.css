@@ -4,14 +4,21 @@
   z-index: 2;
   display: flex;
   justify-content: center;
-}
-
-#toggle-play-button {
-  height: 1rem;
-  width: 1rem;
-  cursor: pointer;
+  gap: .5rem;
 }
 
 #toggle-play-button > svg {
   fill: var(--primary-text-color)
+}
+
+#controls > * {
+  height: 1rem;
+  width: 1rem;
+  fill: var(--primary-text-color);
+  cursor: pointer;
+}
+
+#controls > *.disabled {
+  opacity: 0.4;
+  cursor: default;
 }
