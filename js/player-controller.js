@@ -1,4 +1,3 @@
-
 // Define Elements and States
 
 /** @type {HTMLAudioElement} */
@@ -25,7 +24,8 @@ var playing = false;
 volumeLevel.innerHTML = '100%';
 showTime();
 player.addEventListener('ended', play_music); // Add another song to play when current one ends
-play_music(); // Start playing a random song
+// Remove the line below to prevent autoplay
+// play_music(); // Start playing a random song
 
 // Functions
 /**
@@ -42,7 +42,7 @@ function updateIconsVisibility() {
 }
 
 /**
- * Starts a interval to update the clock display every 1 second
+ * Starts an interval to update the clock display every 1 second
  * Calls itself
  */
 function showTime() {
@@ -80,10 +80,10 @@ function playpause() {
  * ???
  */
 function controller() {
-  
   playing = !playing;
   if (!controller_state) {
-    play_music();
+    // Remove the line below to prevent autoplay
+    // play_music();
     controller_state = true;
     playing = true;
   }
