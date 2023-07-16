@@ -36,6 +36,7 @@ playHistory.onTracksChange = function() {
 
 skipToNextButton.onclick = function(e) {
   e.stopPropagation();
+  playing = true; // assume that playing started because skipped to next
   playHistory.goToNext();
 };
 
