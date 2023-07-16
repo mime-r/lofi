@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- Google Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com/">
+        <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+        <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400&display=swap" rel="stylesheet">
+
+        <!-- Styles -->
+        <link href="./css/hardpixel.css" rel="stylesheet">
+        <link href="./css/index.css" rel="stylesheet">
+
+        <!-- Site Icon -->
+        <link rel="shortcut icon" type="image/x-icon" href="./assets/img/icon.png">
+
+        <!-- JQuery -->
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+        <!-- Site Meta -->
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Lofi Cafe</title>
+    </head>
+    <body>
+        <div class="bg container" onclick="controller()">
+
+            <!-- Top Left Content -->
+            <div id="top-left">
+                <p class="titletext">
+                    <b>Lofi Cafe ☕</b>
+                    <!--- / <a href="#"><u>Credits</u> / <a href="#"><u>About</u>-->
+                    <br>
+                    <a class="descriptiontext">
+                        Click anywhere to play/pause music.
+                        <br>
+                        Up and Down arrows to change volume.
+                    </a>
+                    <br>
+                    <br>
+                    <a class="descriptiontext">Volume: </a>
+                    <a id="volumelevel">100%</a>
+                </p>
+                <!--input type="image" src="assets/play-icon.svg" onclick="play()" alt="play/pause" class="play">-->
+            </div>
+
+            <!-- Centerpiece Content -->
+            <div id="centerpiece">
+                <div id="controls-icon">
+                    <div id="pause-icon"></div>
+                    <svg id="play-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+                        <polygon points="10,0 90,50 10,100"></polygon>
+                      </svg>
+                </div>
+                <div id="clockdisplay" class="clock" onload="showTime()">08:19:44</div>
+            </div>
+
+            <!-- Bottom Right Content -->
+            <div id="bottom-right">
+                <div id="theme-selector">
+                    <!-- Themes will be populated by themer.js -->
+                </div>
+            </div>
+            <!-- Bottom Left Content -->
+            <div id="bottom-left">
+                <a class="linktext" href="https://discord.gg/wKmVXZCzQ8" target="_blank">/discord</a>
+                &nbsp;&nbsp;
+                <a class="linktext" href="https://discord.gg/wKmVXZCzQ8" target="_blank">/github</a>
+                <!--<input type="image" src="assets\socials\discord.png" class="instagram-icon" onclick="window.open('')">-->
+            </div>
+            
+            <audio autoplay="true" id="player" controls="" src="https://dl.dropboxusercontent.com/s/it48ts39p1jyflm/j%C3%BCle.%20-%20So%20You%20Say.mp3?dl=0"></audio>
+            <!-- Credits: https://icons8.com/icon/25627/discord -->
+            <!--<i class="gg-play-button"></i>-->
+        </div>
+
+        <!-- Scripts -->
+        <script src="./js/data/songs.js"></script>
+        <script src="./js/data/themes.js"></script>
+        <script src="./js/utils.js"></script>
+        <script src="./js/toast.js"></script>
+        <script src="./js/player-controller.js"></script>
+        <script src="./js/themer.js"></script>
+    </body>
+</html>
+
+<!--
+    V1.0:
+    - Initial Release
+    - Added Play/Pause
+    - Added Volume Control
+    - Added Clock
+
+
+    New in V2.0:
+    - Added Toasts
+    - Added Theme Selector
+        - Added 1 Theme: "Tropical"
+    - Added Socials
+        - Added Discord
+        - Added Github
+-->

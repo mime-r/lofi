@@ -1,0 +1,263 @@
+
+/* CSS Variables */
+:root {
+
+  /* Theming */
+  --primary-text-color: rgb(255, 239, 183);
+  --secondary-text-color: rgb(255, 255, 211);
+
+  --primary-font-family: 'Hardpixel', serif;
+  --secondary-font-family: 'Raleway', sans-serif;
+
+  --background-image: url("../assets/img/backgrounds/cafe.gif");
+
+}
+
+body,
+html {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+}
+
+audio {
+  display: none;
+}
+
+a {
+  color: var(--secondary-text-color);
+  text-decoration: none;
+}
+
+.bg {
+  /* The image used */
+  background-image: var(--background-image);
+
+  /* Fill screen */
+  height: 100%;
+  width: 100%;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  /* Center the inner items */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Top Left Content */
+#top-left {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+}
+
+.instagram-icon {
+  /* Position */
+  position: absolute;
+  bottom: 1%;
+  left: 1%;
+
+  /* Size */
+  width: 30px;
+  height: 30px;
+}
+
+.tg-icon {
+  /* Position */
+  position: absolute;
+  bottom: 0.8%;
+  left: 2%;
+
+  /* Size */
+  width: 33px;
+  height: 33px;
+}
+
+.linktext {
+  /* Spacing */
+  margin: 0;
+
+  /* Typography */
+  color: var(--secondary-text-color);
+  font-family: var(--secondary-font-family);
+  font-size: 15px;
+}
+
+.titletext {
+  /* Spacing */
+  margin: 0;
+
+  /* Typography */
+  color: var(--secondary-text-color);
+  font-family: var(--secondary-font-family);
+  font-size: 22px;
+}
+
+.descriptiontext {
+  color: var(--secondary-text-color);
+  font-family: var(--secondary-font-family);
+  font-size: 15px;
+}
+
+/* Centerpiece Content */
+#centerpiece {
+  position: relative;
+}
+
+.clock {
+  /* Position */
+  position: relative;
+  z-index: 1;
+
+  /* Typography */
+  color: var(--primary-text-color);
+  font-family: var(--primary-font-family);
+  font-size: max(7vw, 60px);
+  letter-spacing: 5px;
+  text-shadow: 5px 5px 0px #020406;
+
+  /* Alignment */
+  text-align: center;
+
+  /* Size */
+  width: max(30vw, 300px);
+
+  /* Misc */
+  pointer-events: none;
+}
+
+/* Audio Control Icons */
+#controls-icon {
+  /* Position */
+  position: absolute;
+  inset: 0 0 0 0;
+  margin: auto;
+  z-index: 0;
+
+  /* Size */
+  height: 100%;
+  aspect-ratio: 1 / 1;
+
+  /* Misc */
+  cursor: pointer;
+}
+#controls-icon > * { pointer-events: none; }
+
+#pause-icon,
+#play-icon {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  scale: 1.5;
+}
+
+#pause-icon { opacity: 0; }
+#pause-icon::before,
+#pause-icon::after {
+  /* Position */
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  content: '';
+
+  /* Color */
+  background-color: var(--primary-text-color);
+  
+  /* Size */
+  height: 100%;
+  aspect-ratio: 1 / 3;
+}
+#pause-icon::before { left: 10%; }
+#pause-icon::after { right: 10%; }
+
+#play-icon,
+#pause-icon {
+  fill: var(--primary-text-color);
+  opacity: 0;
+  scale: 3;
+}
+
+/* Controls Icon Animations */
+#controls-icon > .show {
+  opacity: 0.2;
+  scale: 1.5;
+  transition: all 0.5s ease-in-out;
+  animation: fade-out 5s forwards;
+}
+#controls-icon:hover > .show {
+  opacity: 0.2 !important;
+}
+
+@keyframes fade-out {
+  0% { opacity: 0; }
+  10% { opacity: 0.2; }
+  80% { opacity: 0.2; }
+  100% { opacity: 0; }
+}
+
+/* Bottom Right Content */
+#bottom-right {
+  /* Position */
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+
+  /* Reverse Order */
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+#bottom-left {
+  /* Position */
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+
+  /* Reverse Order */
+  display: flex;
+  /*flex-direction: column-reverse;*/
+
+  /* Increase spacing between rows */
+  gap: 0.1rem;
+
+}
+
+
+#theme-selector {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.theme-icon {
+  stroke: var(--primary-text-color);
+  stroke-width: 1px;
+  height: 2rem;
+  width: 2rem;
+  cursor: pointer;
+}
+
+.theme-icon.selected {
+  stroke-width: 2px;
+}
+
+.toast {
+  font-family: var(--secondary-font-family);
+  padding: 15px 20px;
+  color: #fff;
+  background-color: rgba(0, 0, 10, 0.3); /* Adjust the alpha value */
+  display: inline-block;
+  position: fixed;
+  top: -100px;
+  right: 15px;
+  opacity: 0;
+  transition: all 0.4s ease-out;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px); /* For Safari */
+}
+

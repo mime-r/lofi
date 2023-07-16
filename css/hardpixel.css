@@ -1,0 +1,7 @@
+@font-face {
+  font-family: "Hardpixel";
+  src: url("../assets/fonts/Hardpixel.woff2") format("woff2"), /* chrome firefox */
+      url("../assets/fonts/Hardpixel.woff") format("woff"), /* chrome firefox */
+      url("../assets/fonts/Hardpixel.ttf") format("truetype"), /* chrome firefox opera Safari, Android, iOS 4.2+*/
+      url("../assets/fonts/Hardpixel.svg") format("svg"); /* iOS 4.1- */
+}
