@@ -23,9 +23,64 @@ var playing = false;
 // Initial Setup
 volumeLevel.innerHTML = '100%';
 showTime();
-player.addEventListener('ended', play_music); // Add another song to play when current one ends
-// Remove the line below to prevent autoplay
-// play_music(); // Start playing a random song
+
+/**
+ * An object to help keep track of the play history
+ */
+const playHistory = {
+  /** The current track index */
+  currentIndex: -1,
+
+  /** An overrideable function to listen for when tracks changed */
+  onTracksChange: function() {},
+
+  /** The list of tracks in the history */
+  tracks: [],
+
+  /** Adds random track onto the list of tracks */
+  addRandomTrack() {
+    let randomTrack = song_list[Math.floor(Math.random() * song_list.length)];
+    this.tracks.push(randomTrack);
+    this.onTracksChange();
+  },
+
+  /** Changes to the previous track (if any) */
+  goToPrev() {
+    if (this.currentIndex > 0 && this.tracks.length > 0) {
+      this.currentIndex -= 1;
+      this.onTracksChange();
+      this.playTrack();
+    }
+  },
+
+  /** Changes to the next track (if not add new track and play) */
+  goToNext() {
+    this.currentIndex += 1;
+    if (this.currentIndex < this.tracks.length) {
+      this.onTracksChange();
+    } else {
+      this.addRandomTrack();
+    }
+    this.playTrack()
+  },
+
+  /** Plays the current index track */
+  playTrack() {
+    player.src = this.tracks[this.currentIndex];
+    player.load(); // Load the audio file without playing it
+
+    // Wait for the audio to be ready to play
+    player.addEventListener('canplaythrough', function() {
+      // Start playing only when the audio is ready
+      player.play().catch(function(error) {
+        // Handle error, if any
+        console.log('Error playing the audio:', error);
+      });
+    }, { once: true });
+  }
+};
+
+player.addEventListener('ended', playHistory.goToNext); // Add another song to play when current one ends
 
 // Functions
 /**
@@ -56,27 +111,6 @@ function showTime() {
 }
 
 /**
- * Plays a random song from the song list
- * @see {@link song_list}
- */
- function play_music() {
-  /** @type {string} */
-  let random_song = song_list[Math.floor(Math.random() * song_list.length)];
-  player.src = random_song;
-  player.load(); // Load the audio file without playing it
-
-  // Wait for the audio to be ready to play
-  player.addEventListener('canplaythrough', function() {
-    // Start playing only when the audio is ready
-    player.play().catch(function(error) {
-      // Handle error, if any
-      console.log('Error playing the audio:', error);
-    });
-  }, { once: true }); // Use { once: true } to ensure the event listener is removed after it's triggered
-}
-
-
-/**
  * Toggles the music between playing and paused
  */
  function playpause() {
@@ -100,7 +134,7 @@ function showTime() {
  function controller() {
   playing = !playing;
   if (!controller_state) {
-    play_music();
+    playHistory.goToNext(); // No songs initially, so add track and play it
     controller_state = true;
     playing = true;
     player.play().catch(function(error) {
