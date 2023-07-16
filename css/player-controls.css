@@ -22,3 +22,7 @@
   opacity: 0.4;
   cursor: default;
 }
+
+#controls svg {
+  filter: drop-shadow(.5px .5px 1px rgba(0, 0, 0, 0.5));
+}
