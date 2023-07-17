@@ -1,0 +1,28 @@
+
+#controls {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+}
+
+#toggle-play-button > svg {
+  fill: var(--primary-text-color)
+}
+
+#controls > * {
+  height: 2rem;
+  width: 2rem;
+  fill: var(--primary-text-color);
+  cursor: pointer;
+}
+
+#controls > *.disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+#controls svg {
+  filter: drop-shadow(.5px .5px 1px rgba(0, 0, 0, 0.5));
+}
