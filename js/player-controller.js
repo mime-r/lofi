@@ -19,6 +19,7 @@ var controller_state = false;
 
 // Check whether music is currently playing, used for the controls icon
 var playing = false;
+var loading = false;
 
 // Initial Setup
 volumeLevel.innerHTML = '100%';
@@ -81,6 +82,8 @@ const playHistory = {
 };
 
 player.addEventListener('ended', playHistory.goToNext.bind(playHistory)); // Add another song to play when current one ends
+player.addEventListener('loadstart', () => loading = true);
+player.addEventListener('loadedmetadata', () => loading = false);
 
 // Functions
 /**
@@ -132,6 +135,7 @@ function showTime() {
  * ???
  */
  function controller() {
+  if (loading) return;
   playing = !playing;
   if (!controller_state) {
     playHistory.goToNext(); // No songs initially, so add track and play it
