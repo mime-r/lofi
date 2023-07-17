@@ -54,8 +54,8 @@ skipToPrevButton.onclick = function(e) {
  * @param {boolean} isPlaying 
  */
 function updateTogglePlayButton(isPlaying) {
-  togglePlayIcon.style.display = isPlaying ? "block" : "none";
-  togglePauseIcon.style.display = isPlaying ? "none" : "block";
+  togglePlayIcon.style.display = isPlaying ? "none" : "block";
+  togglePauseIcon.style.display = isPlaying ? "block" : "none";
 }
 
 /** Update the skip buttons disabled/enabled state */
