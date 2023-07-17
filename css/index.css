@@ -261,3 +261,9 @@ a {
   -webkit-backdrop-filter: blur(10px); /* For Safari */
 }
 
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+  .toast {
+    display: none; /* Hide the toast on smaller screens */
+  }
+}
