@@ -4,7 +4,7 @@
   z-index: 2;
   display: flex;
   justify-content: center;
-  gap: 3rem;
+  gap: 3vw;
 }
 
 #toggle-play-button > svg {
@@ -12,8 +12,8 @@
 }
 
 #controls > * {
-  height: 2rem;
-  width: 2rem;
+  height: 2vw;
+  width: 2vw;
   fill: var(--primary-text-color);
   cursor: pointer;
 }
@@ -26,3 +26,4 @@
 #controls svg {
   filter: drop-shadow(.5px .5px 1px rgba(0, 0, 0, 0.5));
 }
+
