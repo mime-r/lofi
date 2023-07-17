@@ -3,7 +3,9 @@
 /** @type {HTMLDivElement} */
 const togglePlayButton = document.querySelector('#toggle-play-button');
 /** @type {SVGElement} */
- const togglePlayIcon = togglePlayButton.firstElementChild;
+const togglePlayIcon = togglePlayButton.firstElementChild;
+/** @type {SVGElement} */
+const loadingIcon = document.querySelector('#loading-icon');
 /** @type {SVGElement} */
 const togglePauseIcon = togglePlayButton.lastElementChild;
 
@@ -45,7 +47,18 @@ skipToPrevButton.onclick = function(e) {
   if (playHistory.currentIndex > 0) {
     playHistory.goToPrev();
   }
-}
+};
+
+player.addEventListener('loadstart', function(e) {
+  loadingIcon.style.display = "block";
+  togglePlayIcon.style.display = "none";
+  togglePauseIcon.style.display = "none";
+});
+
+player.addEventListener('loadedmetadata', function(e) {
+  loadingIcon.style.display = "none";
+  updateTogglePlayButton(true);
+});
 
 // Functions
 
