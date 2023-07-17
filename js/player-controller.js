@@ -167,9 +167,12 @@ document.onkeydown = function (e) {
       volumeLevel.innerHTML = formatVolume(player.volume);
     }
     console.log(player.volume);
+  } else if (e.key === "ArrowLeft") {
+    playHistory.goToPrev();
+  } else if (e.key === "ArrowRight") {
+    playing = true; // assume that playing started because skipped to next
+    playHistory.goToNext();
   }
-
-
 }
 
 document.querySelectorAll("#bottom-left .linktext").forEach(function (element) {
