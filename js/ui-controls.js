@@ -60,6 +60,11 @@ function updateTogglePlayButton(isPlaying) {
 
 /** Update the skip buttons disabled/enabled state */
 function updateSkipButtons() {
+  // Skip Next won't be disabled once the user clicks play once
+  if (playHistory.tracks.length > 0) {
+    skipToNextButton.classList = null;
+  }
+  // Skip Prev will only be enabled when there is a previous track
   if (playHistory.currentIndex < 1) {
     skipToPrevButton.classList = "disabled";
   } else {

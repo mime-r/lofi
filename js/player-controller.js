@@ -170,6 +170,10 @@ document.onkeydown = function (e) {
   } else if (e.key === "ArrowLeft") {
     playHistory.goToPrev();
   } else if (e.key === "ArrowRight") {
+    // Prevent user from going to next track when they haven't started the player
+    if (playHistory.tracks.length < 1) {
+      return;
+    }
     playing = true; // assume that playing started because skipped to next
     playHistory.goToNext();
   }
