@@ -12,8 +12,8 @@
 }
 
 #controls > * {
-  height: 2vw;
-  width: 2vw;
+  height: 2.5vw;
+  width: 2.5vw;
   fill: var(--primary-text-color);
   cursor: pointer;
 }
