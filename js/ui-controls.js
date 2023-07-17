@@ -3,7 +3,7 @@
 /** @type {HTMLDivElement} */
 const togglePlayButton = document.querySelector('#toggle-play-button');
 /** @type {SVGElement} */
-const togglePlayIcon = togglePlayButton.firstElementChild;
+ const togglePlayIcon = togglePlayButton.firstElementChild;
 /** @type {SVGElement} */
 const togglePauseIcon = togglePlayButton.lastElementChild;
 
@@ -54,8 +54,8 @@ skipToPrevButton.onclick = function(e) {
  * @param {boolean} isPlaying 
  */
 function updateTogglePlayButton(isPlaying) {
-  togglePlayIcon.style.display = isPlaying ? "none" : "block";
-  togglePauseIcon.style.display = isPlaying ? "block" : "none";
+  togglePlayIcon.style.display = isPlaying ? "block" : "none";
+  togglePauseIcon.style.display = isPlaying ? "none" : "block";
 }
 
 /** Update the skip buttons disabled/enabled state */
