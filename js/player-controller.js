@@ -149,8 +149,7 @@ function showTime() {
 
 
 document.onkeydown = function (e) {
-  e = e || window.event;
-  if (e.keyCode == '38') {
+  if (e.key == "ArrowUp") {
     try {
       player.volume += 0.1;
       volumeLevel.innerHTML = formatVolume(player.volume);
@@ -159,7 +158,7 @@ document.onkeydown = function (e) {
       volumeLevel.innerHTML = formatVolume(player.volume);
     }
     console.log(player.volume);
-  } else if (e.keyCode == '40') {
+  } else if (e.key === "ArrowDown") {
     try {
       player.volume -= 0.1;
       volumeLevel.innerHTML = formatVolume(player.volume);
@@ -169,6 +168,8 @@ document.onkeydown = function (e) {
     }
     console.log(player.volume);
   }
+
+
 }
 
 document.querySelectorAll("#bottom-left .linktext").forEach(function (element) {
