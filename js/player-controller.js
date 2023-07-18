@@ -82,7 +82,13 @@ const playHistory = {
 };
 
 player.addEventListener('ended', playHistory.goToNext.bind(playHistory)); // Add another song to play when current one ends
-player.addEventListener('loadstart', () => loading = true);
+
+// loading listeners
+player.addEventListener('loadstart', function() {
+  // prevent loading when controller hasnt even started
+  if (!controller_state) return;
+  loading = true;
+});
 player.addEventListener('loadedmetadata', () => loading = false);
 
 // Functions
