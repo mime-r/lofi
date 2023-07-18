@@ -30,11 +30,6 @@
 
 #loading-icon {
   animation: loading infinite 1s linear;
-  display: none;
-}
-
-.paused #loading-icon {
-  display: none;
 }
 
 @keyframes loading {
