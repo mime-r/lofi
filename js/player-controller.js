@@ -19,6 +19,7 @@ var controller_state = false;
 
 // Check whether music is currently playing, used for the controls icon
 var playing = false;
+var loading = false;
 
 // Initial Setup
 volumeLevel.innerHTML = '100%';
@@ -82,6 +83,14 @@ const playHistory = {
 
 player.addEventListener('ended', playHistory.goToNext.bind(playHistory)); // Add another song to play when current one ends
 
+// loading listeners
+player.addEventListener('loadstart', function() {
+  // prevent loading when controller hasnt even started
+  if (!controller_state) return;
+  loading = true;
+});
+player.addEventListener('loadedmetadata', () => loading = false);
+
 // Functions
 /**
  * Update which icon should be shown or hidden based on playing
@@ -132,6 +141,7 @@ function showTime() {
  * ???
  */
  function controller() {
+  if (loading) return;
   playing = !playing;
   if (!controller_state) {
     playHistory.goToNext(); // No songs initially, so add track and play it
@@ -149,8 +159,7 @@ function showTime() {
 
 
 document.onkeydown = function (e) {
-  e = e || window.event;
-  if (e.keyCode == '38') {
+  if (e.key == "ArrowUp") {
     try {
       player.volume += 0.1;
       volumeLevel.innerHTML = formatVolume(player.volume);
@@ -159,7 +168,7 @@ document.onkeydown = function (e) {
       volumeLevel.innerHTML = formatVolume(player.volume);
     }
     console.log(player.volume);
-  } else if (e.keyCode == '40') {
+  } else if (e.key === "ArrowDown") {
     try {
       player.volume -= 0.1;
       volumeLevel.innerHTML = formatVolume(player.volume);
@@ -168,6 +177,15 @@ document.onkeydown = function (e) {
       volumeLevel.innerHTML = formatVolume(player.volume);
     }
     console.log(player.volume);
+  } else if (e.key === "ArrowLeft") {
+    playHistory.goToPrev();
+  } else if (e.key === "ArrowRight") {
+    // Prevent user from going to next track when they haven't started the player
+    if (playHistory.tracks.length < 1) {
+      return;
+    }
+    playing = true; // assume that playing started because skipped to next
+    playHistory.goToNext();
   }
 }
 
