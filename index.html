@@ -68,17 +68,21 @@
                         <svg id="toggle-play-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
                             <polygon points="10,0 90,50 10,100"></polygon>
                         </svg>
+                        <svg id="loading-icon" style="display: none;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 26.458333 26.458334">
+                            <path
+                                d="M 24.340064,13.228665 A 11.112499,11.112 0 0 1 17.480134,23.494815 11.112499,11.112 0 0 1 5.3698412,21.086036 11.112499,11.112 0 0 1 2.9609543,8.9762867 11.112499,11.112 0 0 1 13.227565,2.1166649"
+                                style="fill:none;stroke:var(--primary-text-color);stroke-width:4.23333333;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers stroke fill" />
+                        </svg>
                         <svg id="toggle-pause-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
                             <polygon points="10,0 40,0 40,100 10,100"></polygon>
                             <polygon points="60,0 90,0 90,100 60,100"></polygon>
                         </svg>
                     </div>
-                    
-                    <svg id="next-button" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" height="300" width="300">
+
+                    <svg id="next-button" class="disabled" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
                         <polygon points="100,50 65,0 50,0 50,15 75,50 50,85 50,100 65,100"></polygon>
                         <polygon points="50,50 15,0 0,0 0,15 25,50 0,85 0,100 15,100"></polygon>
                     </svg>
-                    
                 </div>
             </div>
 
@@ -138,4 +142,9 @@
 
     V2.1.1:
     - Fixed scaling of buttons for mobile/smaller UIs.
+    
+    V2.1.2:
+    - Various bugfixes
+    - Added loading icon for when the player is loading a song.
+    - Fixed loading icon indefinite scroll on page load.
 -->

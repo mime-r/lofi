@@ -3,7 +3,9 @@
 /** @type {HTMLDivElement} */
 const togglePlayButton = document.querySelector('#toggle-play-button');
 /** @type {SVGElement} */
- const togglePlayIcon = togglePlayButton.firstElementChild;
+const togglePlayIcon = togglePlayButton.firstElementChild;
+/** @type {SVGElement} */
+const loadingIcon = document.querySelector('#loading-icon');
 /** @type {SVGElement} */
 const togglePauseIcon = togglePlayButton.lastElementChild;
 
@@ -45,7 +47,21 @@ skipToPrevButton.onclick = function(e) {
   if (playHistory.currentIndex > 0) {
     playHistory.goToPrev();
   }
-}
+};
+
+
+player.addEventListener('loadstart', function(e) {
+  // prevent loading when controller hasnt even started
+  if (!controller_state) return;
+  loadingIcon.style.display = "block";
+  togglePlayIcon.style.display = "none";
+  togglePauseIcon.style.display = "none";
+});
+
+player.addEventListener('loadedmetadata', function(e) {
+  loadingIcon.style.display = "none";
+  updateTogglePlayButton(true);
+});
 
 // Functions
 
@@ -60,6 +76,11 @@ function updateTogglePlayButton(isPlaying) {
 
 /** Update the skip buttons disabled/enabled state */
 function updateSkipButtons() {
+  // Skip Next won't be disabled once the user clicks play once
+  if (playHistory.tracks.length > 0) {
+    skipToNextButton.classList = null;
+  }
+  // Skip Prev will only be enabled when there is a previous track
   if (playHistory.currentIndex < 1) {
     skipToPrevButton.classList = "disabled";
   } else {
