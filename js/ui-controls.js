@@ -49,7 +49,10 @@ skipToPrevButton.onclick = function(e) {
   }
 };
 
+
 player.addEventListener('loadstart', function(e) {
+  // prevent loading when controller hasnt even started
+  if (!controller_state) return;
   loadingIcon.style.display = "block";
   togglePlayIcon.style.display = "none";
   togglePauseIcon.style.display = "none";
