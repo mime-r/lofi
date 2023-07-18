@@ -68,7 +68,7 @@ const playHistory = {
   /** Plays the current index track */
   playTrack() {
     player.src = this.tracks[this.currentIndex];
-    player.load(); // Load the audio file without playing it
+      player.load(); // Load the audio file without playing it
 
     // Wait for the audio to be ready to play
     player.addEventListener('canplaythrough', function() {

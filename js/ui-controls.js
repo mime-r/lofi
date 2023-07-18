@@ -53,11 +53,13 @@ player.addEventListener('loadstart', function(e) {
   loadingIcon.style.display = "block";
   togglePlayIcon.style.display = "none";
   togglePauseIcon.style.display = "none";
+  console.log("Loadstart called.")
 });
 
 player.addEventListener('loadedmetadata', function(e) {
   loadingIcon.style.display = "none";
   updateTogglePlayButton(true);
+  console.log("Loadedmetadata called.")
 });
 
 // Functions
