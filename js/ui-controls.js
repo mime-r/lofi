@@ -14,6 +14,9 @@ const skipToPrevButton = document.querySelector('#prev-button');
 /** @type {SVGElement} */
 const skipToNextButton = document.querySelector('#next-button');
 
+/** @type {HTMLInputElement} */
+const volumeSlider = document.querySelector('#volume-slider');
+
 // Initial Setup
 updateTogglePlayButton(playing);
 updateSkipButtons(); // ensure initial UI state is correct
@@ -30,6 +33,10 @@ player.addEventListener('play', function(e) {
 
 player.addEventListener('pause', function(e) {
   updateTogglePlayButton(isPlaying = false);
+});
+
+player.addEventListener('volumechange', function(e) {
+  volumeSlider.value = Math.round(player.volume * 100);
 });
 
 playHistory.onTracksChange = function() {
