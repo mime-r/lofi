@@ -56,7 +56,6 @@ skipToPrevButton.onclick = function(e) {
   }
 };
 
-
 player.addEventListener('loadstart', function(e) {
   // prevent loading when controller hasnt even started
   if (!controller_state) return;
@@ -68,6 +67,20 @@ player.addEventListener('loadstart', function(e) {
 player.addEventListener('loadedmetadata', function(e) {
   loadingIcon.style.display = "none";
   updateTogglePlayButton(true);
+});
+
+volumeSlider.addEventListener('click', function(e) {
+  e.stopPropagation();
+});
+
+volumeSlider.addEventListener('change', function(e) {
+  const volume = e.target.value / 100;
+  player.volume = volume;
+  volumeLevel.innerText = `${e.target.value}%`;
+});
+
+volumeSlider.addEventListener('input', function(e) {
+  volumeLevel.innerText = `${this.value}%`;
 });
 
 // Functions
