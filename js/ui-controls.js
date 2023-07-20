@@ -83,6 +83,10 @@ volumeSlider.addEventListener('input', function(e) {
   volumeLevel.innerText = `${this.value}%`;
 });
 
+volumeSlider.addEventListener('keydown', function(e) {
+  e.preventDefault();
+});
+
 // Functions
 
 /**
