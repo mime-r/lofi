@@ -36,3 +36,104 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+/* Volume Controls */
+#volume-controls {
+  display: flex;
+  width: 100%;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+}
+
+#volume-controls > svg {
+  height: 2rem;
+  width: 2rem;
+  stroke: var(--primary-text-color);
+  fill: var(--primary-text-color);
+  filter: drop-shadow(.5px .5px 1px rgba(0, 0, 0, 0.5));
+}
+
+/* Volume Slider */
+#volume-slider {
+  -webkit-appearance: none;
+  background: transparent;
+  flex-grow: 1;
+}
+#volume-slider:focus {
+  outline: none;
+}
+#volume-slider::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 4px;
+  cursor: pointer;
+  box-shadow: 0px 0px 0px #000000;
+  background: var(--primary-text-color);
+  border-radius: 50px;
+  border: 0px solid #000000;
+}
+#volume-slider::-webkit-slider-thumb {
+  box-shadow: 0px 0px 1px #000000;
+  border: 0px solid #000000;
+  height: 12px;
+  width: 12px;
+  background: var(--secondary-text-color);
+  border-radius: 1rem;
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -4px;
+}
+#volume-slider:focus::-webkit-slider-runnable-track {
+  background: var(--primary-text-color);
+}
+#volume-slider::-moz-range-track {
+  width: 100%;
+  height: 4px;
+  cursor: pointer;
+  box-shadow: 0px 0px 0px #000000;
+  background: var(--primary-text-color);
+  border-radius: 50px;
+  border: 0px solid #000000;
+}
+#volume-slider::-moz-range-thumb {
+  background: var(--secondary-text-color);
+  box-shadow: 0px 0px 1px #000000;
+  border: 0px solid #000000;
+  height: 12px;
+  width: 12px;
+  border-radius: 50px;
+  cursor: pointer;
+}
+#volume-slider::-ms-track {
+  width: 100%;
+  height: 4px;
+  cursor: pointer;
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+#volume-slider::-ms-fill-lower {
+  background: var(--primary-text-color);
+  border: 0px solid #000000;
+  border-radius: 100px;
+  box-shadow: 0px 0px 0px #000000;
+}
+#volume-slider::-ms-fill-upper {
+  background: var(--primary-text-color);
+  border: 0px solid #000000;
+  border-radius: 100px;
+  box-shadow: 0px 0px 0px #000000;
+}
+#volume-slider::-ms-thumb {
+  box-shadow: 0px 0px 1px #000000;
+  border: 0px solid #000000;
+  height: 12px;
+  width: 12px;
+  border-radius: 50px;
+  cursor: pointer;
+}
+#volume-slider:focus::-ms-fill-lower {
+  background: var(--primary-text-color);
+}
+#volume-slider:focus::-ms-fill-upper {
+  background: var(--primary-text-color);
+}

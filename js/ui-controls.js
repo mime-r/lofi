@@ -14,6 +14,9 @@ const skipToPrevButton = document.querySelector('#prev-button');
 /** @type {SVGElement} */
 const skipToNextButton = document.querySelector('#next-button');
 
+/** @type {HTMLInputElement} */
+const volumeSlider = document.querySelector('#volume-slider');
+
 // Initial Setup
 updateTogglePlayButton(playing);
 updateSkipButtons(); // ensure initial UI state is correct
@@ -30,6 +33,10 @@ player.addEventListener('play', function(e) {
 
 player.addEventListener('pause', function(e) {
   updateTogglePlayButton(isPlaying = false);
+});
+
+player.addEventListener('volumechange', function(e) {
+  volumeSlider.value = Math.round(player.volume * 100);
 });
 
 playHistory.onTracksChange = function() {
@@ -49,7 +56,6 @@ skipToPrevButton.onclick = function(e) {
   }
 };
 
-
 player.addEventListener('loadstart', function(e) {
   // prevent loading when controller hasnt even started
   if (!controller_state) return;
@@ -61,6 +67,24 @@ player.addEventListener('loadstart', function(e) {
 player.addEventListener('loadedmetadata', function(e) {
   loadingIcon.style.display = "none";
   updateTogglePlayButton(true);
+});
+
+volumeSlider.addEventListener('click', function(e) {
+  e.stopPropagation();
+});
+
+volumeSlider.addEventListener('change', function(e) {
+  const volume = e.target.value / 100;
+  player.volume = volume;
+  volumeLevel.innerText = `${e.target.value}%`;
+});
+
+volumeSlider.addEventListener('input', function(e) {
+  volumeLevel.innerText = `${this.value}%`;
+});
+
+volumeSlider.addEventListener('keydown', function(e) {
+  e.preventDefault();
 });
 
 // Functions
