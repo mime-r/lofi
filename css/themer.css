@@ -15,3 +15,13 @@
 .theme-icon.selected {
   stroke-width: 2px;
 }
+
+/* Icons that needs special styling */
+/* Pumpkin Icon */
+.theme-icon[data-icon="halloween"] {
+  color: var(--primary-text-color);
+}
+
+.theme-icon[data-icon="halloween"].selected {
+  stroke-width: 12px;
+}

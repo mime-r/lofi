@@ -17,7 +17,7 @@ const themes = [
   createTheme(
     themeName = "halloween1",
     themeIconSvg = `
-      <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+      <svg data-icon="halloween" stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
         <path d="
           M252.5 21.156c-16.98.22-33.708 4.552-49.72 13.313l-4.593 2.5-.25 5.218c-.71 14.473-.49 33.985 3.063 52.968-45.775 2.55-84.144 20.94-113.094 48.625
           C48.312 181.647 25.87 236.18 22.47 291c-3.402 54.82 12.32 110.396 50.5 149.563 38.01 38.994 98.086 60.67 179.843 49.437 91.743 8.826 154.664-13.978
