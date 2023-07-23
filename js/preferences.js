@@ -17,7 +17,6 @@ const Preferences = (function() {
   }
 
   function savePreferences(newPreferences) {
-    console.log("saving.. ", newPreferences);
     if (newPreferences.volume !== undefined) volume = newPreferences.volume;
     if (newPreferences.theme !== undefined) theme = newPreferences.theme;
     localStorage.setItem("preferences", JSON.stringify({
