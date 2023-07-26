@@ -76,7 +76,6 @@ volumeSlider.addEventListener('click', function(e) {
 volumeSlider.addEventListener('change', function(e) {
   const volume = e.target.value / 100;
   player.volume = volume;
-  volumeLevel.innerText = `${e.target.value}%`;
 });
 
 volumeSlider.addEventListener('input', function(e) {
