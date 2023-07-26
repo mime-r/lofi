@@ -1,0 +1,27 @@
+
+#theme-selector {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.theme-icon {
+  stroke: var(--primary-text-color);
+  stroke-width: 1px;
+  height: 2rem;
+  width: 2rem;
+  cursor: pointer;
+}
+
+.theme-icon.selected {
+  stroke-width: 2px;
+}
+
+/* Icons that needs special styling */
+/* Pumpkin Icon */
+.theme-icon[data-icon="halloween"] {
+  color: var(--primary-text-color);
+}
+
+.theme-icon[data-icon="halloween"].selected {
+  stroke-width: 12px;
+}
