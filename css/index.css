@@ -258,29 +258,32 @@ a {
   position: relative;
   white-space: nowrap;
   overflow: hidden;
-  width: 300px;
+  width: var(--marquee-max-width);
   height: 1.4rem;
+
+  --marquee-max-width: 300px;
+  --marquee-animation-duration: 10s;
 }
 
 #track-info-text {
   display: inline-block;
   position: absolute;
-  animation: marquee 10s linear infinite;
-  animation-delay: -5s;
+  animation: marquee var(--marquee-animation-duration) linear infinite;
+  animation-delay: calc(var(--marquee-animation-duration) / -2);
 }
 
 #track-info-text.reset-marquee {
   animation: none;
-  transform: translateX(calc(150px - 50%));
+  transform: translateX(calc(calc(var(--marquee-max-width) / 2) - 50%));
 }
 
 
 @keyframes marquee {
   from {
-    transform: translateX(300px);
+    transform: translateX(var(--marquee-max-width));
   }
   50% {
-    transform: translateX(calc(150px - 50%));
+    transform: translateX(calc(calc(var(--marquee-max-width) / 2) - 50%));
   }
   to {
     transform: translateX(-100%);
