@@ -565,7 +565,7 @@ const song_list = [
   createSong(title="Jazzy project 4", artist="", url="https://dl.dropboxusercontent.com/s/41diboemt3wigc2/Jazzy%20project%204.mp3?dl=0"),
   createSong(title="Jazzy project 5", artist="", url="https://dl.dropboxusercontent.com/s/3s7ydxr06o0t4y0/Jazzy%20project%205.mp3?dl=0"),
 
-].map(song => song.url);
+]; // .map(song => song.url)
 
 /**
  * Creates a song object

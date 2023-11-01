@@ -29,6 +29,12 @@ a {
   text-decoration: none;
 }
 
+#trackinfo {
+  color: var(--secondary-text-color);
+  font-family: var(--secondary-font-family);
+  text-decoration: none;
+}
+
 .bg {
   /* The image used */
   background-image: var(--background-image);
@@ -247,5 +253,40 @@ a {
 @media (max-width: 768px) {
   .toast {
     display: none; /* Hide the toast on smaller screens */
+  }
+}
+
+/* Marquee track info */
+
+#trackinfo {
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+#track-title-and-artist {
+  display: inline-block;
+  animation: marquee 10s infinite;
+}
+
+#track-title-and-artist.reset-marquee {
+  animation: none;
+  text-align: center;
+}
+
+
+@keyframes marquee {
+  0% {
+    transform: translateX(50%);
+    animation-timing-function: linear;
+  }
+  50% {
+    transform: translateX(-100%);
+    animation-timing-function: ease-out;
+  }
+  50% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(50%);
   }
 }
