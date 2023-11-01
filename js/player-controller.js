@@ -100,25 +100,23 @@ player.addEventListener('loadstart', function() {
 player.addEventListener('loadedmetadata', () => loading = false);
 
 function updateTrackInfo(trackTitle, trackArtist) {
-  const trackTitleAndArtistElement = document.getElementById('track-title-and-artist');
+  const trackInfoTextElement = document.getElementById('track-info-text');
   if (trackArtist === "") {
     trackArtist = "Unknown Artist";
   }
   const trackInfo = `${trackTitle} - ${trackArtist}`;
 
   // Add a class to reset the marquee
-  trackTitleAndArtistElement.classList.add('reset-marquee');
+  trackInfoTextElement.classList.add('reset-marquee');
 
   // After a short timeout, remove the reset class to start the marquee
   setTimeout(() => {
-    trackTitleAndArtistElement.classList.remove('reset-marquee');
+    trackInfoTextElement.classList.remove('reset-marquee');
   }, 3000); // A very short timeout to avoid making the text disappear
 
   // Set the content with track info immediately
-  trackTitleAndArtistElement.textContent = trackInfo;
+  trackInfoTextElement.textContent = trackInfo;
 }
-
-
 
 // Functions
 /**

@@ -29,12 +29,6 @@ a {
   text-decoration: none;
 }
 
-#trackinfo {
-  color: var(--secondary-text-color);
-  font-family: var(--secondary-font-family);
-  text-decoration: none;
-}
-
 .bg {
   /* The image used */
   background-image: var(--background-image);
@@ -257,36 +251,38 @@ a {
 }
 
 /* Marquee track info */
-
-#trackinfo {
+#track-info {
+  color: var(--secondary-text-color);
+  font-family: var(--secondary-font-family);
+  text-decoration: none;
+  position: relative;
   white-space: nowrap;
   overflow: hidden;
+  width: 300px;
+  height: 1.4rem;
 }
 
-#track-title-and-artist {
+#track-info-text {
   display: inline-block;
-  animation: marquee 10s infinite;
+  position: absolute;
+  animation: marquee 10s linear infinite;
+  animation-delay: -5s;
 }
 
-#track-title-and-artist.reset-marquee {
+#track-info-text.reset-marquee {
   animation: none;
-  text-align: center;
+  transform: translateX(calc(150px - 50%));
 }
 
 
 @keyframes marquee {
-  0% {
-    transform: translateX(50%);
-    animation-timing-function: linear;
+  from {
+    transform: translateX(300px);
   }
   50% {
+    transform: translateX(calc(150px - 50%));
+  }
+  to {
     transform: translateX(-100%);
-    animation-timing-function: ease-out;
-  }
-  50% {
-    transform: translateX(100%);
-  }
-  100% {
-    transform: translateX(50%);
   }
 }
