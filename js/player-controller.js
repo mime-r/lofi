@@ -106,27 +106,22 @@ player.addEventListener('volumechange', function() {
   Preferences.savePreferences({ volume: this.volume });
 });
 
+// Functions
+
+/**
+ * Updates track info to show "trackTitle - trackArtist"
+ * @param {string} trackTitle 
+ * @param {string} trackArtist 
+ */
 function updateTrackInfo(trackTitle, trackArtist) {
   const trackInfoTextElement = document.getElementById('track-info-text');
   if (trackArtist === "") {
     trackArtist = "Unknown Artist";
   }
   const trackInfo = `"${trackTitle} - ${trackArtist}"`;
-
-  // Add a class to reset the marquee
-  /*trackInfoTextElement.classList.add('reset-marquee');*/
-
-  // After a short timeout, remove the reset class to start the marquee
-  /*
-  setTimeout(() => {
-    trackInfoTextElement.classList.remove('reset-marquee');
-  }, 3000); // A very short timeout to avoid making the text disappear
-  */
-  // Set the content with track info immediately
   trackInfoTextElement.textContent = trackInfo;
 }
 
-// Functions
 /**
  * Update which icon should be shown or hidden based on playing
  */
@@ -157,7 +152,7 @@ function showTime() {
 /**
  * Toggles the music between playing and paused
  */
- function playpause() {
+function playpause() {
   if (player.paused) {
     player.play().catch(function(error) {
       // Handle error, if any
@@ -175,7 +170,7 @@ function showTime() {
 /**
  * ???
  */
- function controller() {
+function controller() {
   if (loading) return;
   playing = !playing;
   if (!controller_state) {
