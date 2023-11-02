@@ -104,16 +104,17 @@ function updateTrackInfo(trackTitle, trackArtist) {
   if (trackArtist === "") {
     trackArtist = "Unknown Artist";
   }
-  const trackInfo = `${trackTitle} - ${trackArtist}`;
+  const trackInfo = `"${trackTitle} - ${trackArtist}"`;
 
   // Add a class to reset the marquee
-  trackInfoTextElement.classList.add('reset-marquee');
+  /*trackInfoTextElement.classList.add('reset-marquee');*/
 
   // After a short timeout, remove the reset class to start the marquee
+  /*
   setTimeout(() => {
     trackInfoTextElement.classList.remove('reset-marquee');
   }, 3000); // A very short timeout to avoid making the text disappear
-
+  */
   // Set the content with track info immediately
   trackInfoTextElement.textContent = trackInfo;
 }
