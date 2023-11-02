@@ -249,3 +249,14 @@ a {
     display: none; /* Hide the toast on smaller screens */
   }
 }
+
+
+#track-info {
+  color: var(--secondary-text-color);
+  font-family: var(--secondary-font-family);
+  width: 100%;
+  text-align: center;
+  margin-bottom: 4%;
+  font-style: italic;
+  font-size: max(1.5vw, 16px);
+}

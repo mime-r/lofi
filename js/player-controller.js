@@ -65,10 +65,16 @@ const playHistory = {
     this.playTrack()
   },
 
-  /** Plays the current index track */
+
+
   playTrack() {
-    player.src = this.tracks[this.currentIndex];
+    const currentTrack = this.tracks[this.currentIndex];
+
+    player.src = currentTrack.url;
     player.load(); // Load the audio file without playing it
+
+    console.log("Now playing: "+ currentTrack.meta.title, currentTrack.meta.artist); // For logging purposes
+    updateTrackInfo(currentTrack.meta.title, currentTrack.meta.artist);
 
     // Wait for the audio to be ready to play
     player.addEventListener('canplaythrough', function() {
@@ -78,7 +84,9 @@ const playHistory = {
         console.log('Error playing the audio:', error);
       });
     }, { once: true });
-  }
+  } 
+
+  
 };
 
 // Setup Listeners
@@ -99,6 +107,21 @@ player.addEventListener('volumechange', function() {
 });
 
 // Functions
+
+/**
+ * Updates track info to show "trackTitle - trackArtist"
+ * @param {string} trackTitle 
+ * @param {string} trackArtist 
+ */
+function updateTrackInfo(trackTitle, trackArtist) {
+  const trackInfoTextElement = document.getElementById('track-info-text');
+  if (trackArtist === "") {
+    trackArtist = "Unknown Artist";
+  }
+  const trackInfo = `"${trackTitle} - ${trackArtist}"`;
+  trackInfoTextElement.textContent = trackInfo;
+}
+
 /**
  * Update which icon should be shown or hidden based on playing
  */
@@ -129,7 +152,7 @@ function showTime() {
 /**
  * Toggles the music between playing and paused
  */
- function playpause() {
+function playpause() {
   if (player.paused) {
     player.play().catch(function(error) {
       // Handle error, if any
@@ -147,7 +170,7 @@ function showTime() {
 /**
  * ???
  */
- function controller() {
+function controller() {
   if (loading) return;
   playing = !playing;
   if (!controller_state) {
