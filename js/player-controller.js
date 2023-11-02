@@ -22,7 +22,7 @@ var playing = false;
 var loading = false;
 
 // Initial Setup
-volumeLevel.innerHTML = '100%';
+player.volume = Preferences.volume ?? 1;
 showTime();
 
 /**
@@ -89,6 +89,8 @@ const playHistory = {
   
 };
 
+// Setup Listeners
+
 player.addEventListener('ended', playHistory.goToNext.bind(playHistory)); // Add another song to play when current one ends
 
 // loading listeners
@@ -98,6 +100,11 @@ player.addEventListener('loadstart', function() {
   loading = true;
 });
 player.addEventListener('loadedmetadata', () => loading = false);
+
+player.addEventListener('volumechange', function() {
+  volumeLevel.innerHTML = formatVolume(this.volume);
+  Preferences.savePreferences({ volume: this.volume });
+});
 
 function updateTrackInfo(trackTitle, trackArtist) {
   const trackInfoTextElement = document.getElementById('track-info-text');
@@ -190,19 +197,15 @@ document.onkeydown = function (e) {
   if (e.key == "ArrowUp") {
     try {
       player.volume += 0.1;
-      volumeLevel.innerHTML = formatVolume(player.volume);
     } catch (e) {
       player.volume = 1;
-      volumeLevel.innerHTML = formatVolume(player.volume);
     }
     console.log(player.volume);
   } else if (e.key === "ArrowDown") {
     try {
       player.volume -= 0.1;
-      volumeLevel.innerHTML = formatVolume(player.volume);
     } catch (e) {
       player.volume = 0;
-      volumeLevel.innerHTML = formatVolume(player.volume);
     }
     console.log(player.volume);
   } else if (e.key === "ArrowLeft") {
